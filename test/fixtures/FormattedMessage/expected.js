@@ -43,14 +43,23 @@ function (_Component) {
   _createClass(Foo, [{
     key: "render",
     value: function render() {
-      return _react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "foo.bar.baz",
-        defaultMessage: "Hello World!"
-      });
+      var msgs = {
+        baz: this.props.intl.formatMessage({
+          "id": "foo.bar.baz",
+          "defaultMessage": "Hello World!"
+        }),
+        biff: this.props.intl.formatMessage({
+          "id": "foo.bar.biff",
+          "defaultMessage": "Hello Nurse!"
+        })
+      };
+      return _react.default.createElement("div", null, _react.default.createElement("h1", null, msgs.header), _react.default.createElement("p", null, msgs.content));
     }
   }]);
 
   return Foo;
 }(_react.Component);
 
-exports.default = Foo;
+var _default = (0, _reactIntl.injectIntl)(Foo);
+
+exports.default = _default;
